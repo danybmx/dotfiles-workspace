@@ -24,8 +24,11 @@ if [ -e "$HOME/.tmux.conf" ]; then
 fi
 
 cp -f "$HOME/.tmux.conf" "$HOME/.tmux.conf.bak" 2>/dev/null || true
-cp -a ./tmux/. "$HOME"/.tmux/
-ln -sf .tmux/tmux.conf "$HOME"/.tmux.conf;
+cp -f "$HOME/.tmux" "$HOME/.tmux.bak" 2>/dev/null || true
+mkdir -p "$HOME/.tmux"
+ln -sf "$REPODIR/tmux/yank.sh" "$HOME/.tmux/yank.sh"
+ln -sf "$REPODIR/tmux/tmux.remote.conf" "$HOME/.tmux/tmux.remote.conf"
+ln -sf "$REPODIR/tmux/tmux.conf" "$HOME/.tmux.conf"
 
 # Install TPM plugins.
 # TPM requires running tmux server, as soon as `tmux start-server` does not work
