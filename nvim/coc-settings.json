@@ -1,0 +1,34 @@
+{
+  "java.format.settings.url": "/Users/daniel/.config/coc/style/google-java-modified.xml",
+  "java.format.settings.profile": "GoogleStyle",
+  "coc.preferences.formatOnSaveFiletypes": [
+    "java",
+    "javascript",
+    "vue",
+    "php",
+    "yml",
+    "html",
+    "css",
+    "scss",
+    "markdown",
+    "json",
+    "blade"
+  ],
+  "prettier.disableLanguages": [
+  ],
+  "prettier.eslintIntegration": true,
+  "eslint.filetypes": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+  "html.filetypes": [
+    "html",
+    "handlebars",
+    "htmldjango",
+    "blade"
+  ],
+  "vetur.format.defaultFormatter.js": "prettier",
+  "suggest.noselect": false
+}
