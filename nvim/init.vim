@@ -23,6 +23,7 @@ Plug 'stephpy/vim-yaml'
 Plug 'junegunn/goyo.vim'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'morhetz/gruvbox'
+Plug 'digitaltoad/vim-pug'
 
 " Easy align
 Plug 'junegunn/vim-easy-align'
@@ -276,7 +277,7 @@ augroup vimrcEx
   " Set syntax highlighting for specific file types
   autocmd BufRead,BufNewFile *.md set filetype=markdown
   autocmd BufRead,BufNewFile .{jscs,jshint,eslint,prettier}rc set filetype=json
-  autocmd BufRead,BufNewFile *.blade.php set filetype=html
+  autocmd BufRead,BufNewFile *.blade.php set filetype=blade
   autocmd Filetype java,go setlocal tabstop=4 shiftwidth=4
 augroup END
 

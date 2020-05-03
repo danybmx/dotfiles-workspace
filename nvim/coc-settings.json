@@ -11,8 +11,7 @@
     "css",
     "scss",
     "markdown",
-    "json",
-    "blade"
+    "json"
   ],
   "prettier.disableLanguages": [
   ],

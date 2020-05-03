@@ -138,7 +138,6 @@ fpath=(~/.zsh $fpath)
 
 # Aliases
 alias vim=nvim
-alias cat=bat
 
 # Direnv
 eval "$(direnv hook zsh)"
