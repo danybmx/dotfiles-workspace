@@ -30,7 +30,7 @@ git config --global user.name "Daniel Rodriguez Gil"
 git config --global user.email "daniel@dpstudios.es"
 
 # TOOLS
-sudo apt install -y zip bat silversearcher-ag direnv
+sudo apt install -y zip bat silversearcher-ag direnv tmuxinator
 
 # Java
 curl -s "https://get.sdkman.io" | bash

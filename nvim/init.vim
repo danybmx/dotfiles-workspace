@@ -24,6 +24,7 @@ Plug 'junegunn/goyo.vim'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'morhetz/gruvbox'
 Plug 'digitaltoad/vim-pug'
+Plug 'idanarye/vim-merginal'
 
 " Easy align
 Plug 'junegunn/vim-easy-align'
