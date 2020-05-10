@@ -4,6 +4,12 @@ sudo apt upgrade -y
 
 # EDITOR
 sudo apt install -y neovim python3-neovim
+sudo update-alternatives --install /usr/bin/vi vi /usr/bin/nvim 61
+sudo update-alternatives --set vi /usr/bin/nvim
+sudo update-alternatives --install /usr/bin/vim vim /usr/bin/nvim 60
+sudo update-alternatives --set vim /usr/bin/nvim
+sudo update-alternatives --install /usr/bin/editor editor /usr/bin/nvim 60
+sudo update-alternatives --set editor /usr/bin/nvim
 
 # DOCKER
 sudo apt install -y \
