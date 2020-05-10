@@ -7,7 +7,6 @@ endif
 
 call plug#begin(stdpath('data') . '/plugged')
 
-Plug 'rakr/vim-one'
 Plug 'itchyny/lightline.vim'
 Plug 'octref/RootIgnore'
 Plug 'milkypostman/vim-togglelist'
@@ -22,9 +21,9 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'stephpy/vim-yaml'
 Plug 'junegunn/goyo.vim'
 Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'morhetz/gruvbox'
 Plug 'digitaltoad/vim-pug'
 Plug 'idanarye/vim-merginal'
+Plug 'joshdick/onedark.vim'
 
 " Easy align
 Plug 'junegunn/vim-easy-align'
@@ -56,9 +55,10 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
 " Colorscheme
-set background=dark
 set cursorline
-colorscheme gruvbox
+set background=dark
+set termguicolors
+colorscheme onedark
 
 " Settings
 filetype plugin indent on
@@ -81,8 +81,6 @@ set nomodeline    " Set nomodeline
 set number        " Show line numbers
 set numberwidth=5 " Set a fixed width for numbers
 set nowrap        " Set nowrap
-set ignorecase    " Search case insensitive
-set smartcase     " If a uppercase letter appears in the search, it becomes case sensitive
 set tabstop=2     " Set tab size to 2
 set shiftwidth=2  " Set tab spaces to 2
 set shiftround    " Round shift size
@@ -100,7 +98,7 @@ let g:goyo_width=100
 let g:goyo_linenr=1
 
 " Display extra whitespace
-set list listchars=tab:»·,trail:·,nbsp:·
+set list listchars=tab:»·,trail:·,nbsp:·,space:·
 
 " Open new split panes to right and bottom, which feels more natural
 set splitbelow
