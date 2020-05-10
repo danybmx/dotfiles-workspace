@@ -7,6 +7,8 @@ is_app_installed() {
 REPODIR="$(cd "$(dirname "$0")"; pwd -P)"
 cd "$REPODIR";
 
+mkdir -p $HOME/.tmux/plugins || true
+
 if ! is_app_installed tmux; then
   printf "WARNING: \"tmux\" command is not found. \
 Install it first\n"
