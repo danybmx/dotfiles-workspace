@@ -136,9 +136,6 @@ export PATH="$HOME/Resources/bin:$PATH"
 fpath=(~/.zsh $fpath)
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# Aliases
-alias vim=nvim
-
 # Direnv
 eval "$(direnv hook zsh)"
 
