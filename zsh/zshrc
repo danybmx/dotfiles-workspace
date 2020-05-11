@@ -110,7 +110,7 @@ export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
 if [[ "$(uname)" == "Darwin" ]]; then
-  export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
+  export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
   export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
   export PATH=$(brew --prefix openvpn)/sbin:$PATH
 fi
@@ -128,6 +128,7 @@ export NVM_DIR="$HOME/.nvm"
 
 # GO
 export GOPATH="$HOME/Work/go"
+export PATH="$GOPATH/bin:$PATH"
 
 # Resources/bin
 export PATH="$HOME/Resources/bin:$PATH"
