@@ -72,25 +72,26 @@ filetype plugin indent on
 let mapleader = ","
 
 set hidden
-set backspace=2   " Backspace deletes like most programs in insert mode
-set nobackup      " Skip backup files
-set nowritebackup " Skip backup files
-set noswapfile    " http://robots.thoughtbot.com/post/18739402579/global-gitignore#comment-458413287
-set history=100   " Set changes history to 100 for allow more undos!
-set ruler         " show the cursor position all the time
-set showcmd       " display incomplete commands
-set incsearch     " do incremental searching
-set laststatus=2  " Always display the status line
-set autowrite     " Automatically :write before running commands
-set modelines=0   " Disable modelines as a security precaution
-set nomodeline    " Set nomodeline
-set number        " Show line numbers
-set numberwidth=5 " Set a fixed width for numbers
-set nowrap        " Set nowrap
-set tabstop=2     " Set tab size to 2
-set shiftwidth=2  " Set tab spaces to 2
-set shiftround    " Round shift size
-set expandtab     " Expand tabs to spaces by default
+set backspace=2    " Backspace deletes like most programs in insert mode
+set nobackup       " Skip backup files
+set nowritebackup  " Skip backup files
+set noswapfile     " http://robots.thoughtbot.com/post/18739402579/global-gitignore#comment-458413287
+set history=100    " Set changes history to 100 for allow more undos!
+set ruler          " show the cursor position all the time
+set showcmd        " display incomplete commands
+set incsearch      " do incremental searching
+set laststatus=2   " Always display the status line
+set autowrite      " Automatically :write before running commands
+set modelines=0    " Disable modelines as a security precaution
+set nomodeline     " Set nomodeline
+set number         " Show line numbers
+set relativenumber " Use relativenumbers
+set numberwidth=5  " Set a fixed width for numbers
+set nowrap         " Set nowrap
+set tabstop=2      " Set tab size to 2
+set shiftwidth=2   " Set tab spaces to 2
+set shiftround     " Round shift size
+set expandtab      " Expand tabs to spaces by default
 set updatetime=300
 set shortmess+=c
 set signcolumn=yes
