@@ -11,9 +11,11 @@
     "css",
     "scss",
     "markdown",
-    "json"
+    "json",
+    "lua"
   ],
   "prettier.disableLanguages": [
+    "lua"
   ],
   "prettier.eslintIntegration": true,
   "eslint.filetypes": [
@@ -29,5 +31,6 @@
     "blade"
   ],
   "vetur.format.defaultFormatter.js": "prettier",
-  "suggest.noselect": false
+  "suggest.noselect": false,
+  "coc.preferences.jumpCommand": "drop"
 }

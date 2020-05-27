@@ -11,19 +11,21 @@ Plug 'itchyny/lightline.vim'
 Plug 'octref/RootIgnore'
 Plug 'milkypostman/vim-togglelist'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'
 Plug 'mattn/emmet-vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
-Plug 'jwalton512/vim-blade'
-Plug 'tpope/vim-commentary'
-Plug 'jiangmiao/auto-pairs'
 Plug 'stephpy/vim-yaml'
-Plug 'junegunn/goyo.vim'
-Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'christoomey/vim-system-copy'
+Plug 'christoomey/vim-sort-motion'
 Plug 'digitaltoad/vim-pug'
-Plug 'idanarye/vim-merginal'
-Plug 'joshdick/onedark.vim'
+Plug 'hzchirs/vim-material'
+Plug 'Yggdroot/indentLine'
+Plug 'townk/vim-autoclose'
+
+" Text objects
+Plug 'michaeljsmith/vim-indent-object'
 
 " Easy align
 Plug 'junegunn/vim-easy-align'
@@ -36,6 +38,10 @@ Plug 'SirVer/ultisnips'
 Plug 'posva/vim-vue'
 Plug 'othree/html5.vim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'jwalton512/vim-blade'
+Plug 'cakebaker/scss-syntax.vim'
+Plug 'nelsyeung/twig.vim'
+Plug 'phpactor/phpactor', {'for': 'php', 'branch': 'master', 'do': 'composer install --no-dev -o'}
 
 " Easymotion
 Plug 'easymotion/vim-easymotion'
@@ -58,7 +64,7 @@ call plug#end()
 set cursorline
 set background=dark
 set termguicolors
-colorscheme onedark
+colorscheme vim-material
 
 " Settings
 filetype plugin indent on
@@ -85,20 +91,13 @@ set tabstop=2     " Set tab size to 2
 set shiftwidth=2  " Set tab spaces to 2
 set shiftround    " Round shift size
 set expandtab     " Expand tabs to spaces by default
-set updatetime=300 
+set updatetime=300
 set shortmess+=c
 set signcolumn=yes
 
 " Make it obvious where 100 characters is
 set textwidth=100
 set colorcolumn=+1
-
-" Goyo
-let g:goyo_width=100
-let g:goyo_linenr=1
-
-" Display extra whitespace
-set list listchars=tab:»·,trail:·,nbsp:·,space:·
 
 " Open new split panes to right and bottom, which feels more natural
 set splitbelow
@@ -107,9 +106,12 @@ set splitright
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 nnoremap <leader>t :NERDTreeToggle<CR>
-nnoremap <leader>f :GFiles --cached --others --exclude-standard<CR>
+nnoremap <leader>f :Files<CR>
 nnoremap <leader>g :Rag<CR>
 nnoremap <leader>b :Buffers<CR>
+
+" FZF
+let $FZF_DEFAULT_COMMAND='rg --files --smart-case'
 
 " "Raw"-version of Ag.
 " Prepend `autocmd VimEnter *` if you want to name it Ag
@@ -147,6 +149,7 @@ nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gs :call CocAction('jumpDefinition', 'split')<CR>
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
@@ -169,9 +172,9 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 nmap <silent> rn <Plug>(coc-rename)
 
 " Formatting selected code.
-xmap <silent> cf <Plug>(coc-format-selected)
-nmap <silent> cf <Plug>(coc-format-selected)
-nmap <silent> cF <Plug>(coc-format)
+xmap <silent> <leader>cf <Plug>(coc-format-selected)
+nmap <silent> <leader>cf <Plug>(coc-format-selected)
+nmap <silent> <leader>cF <Plug>(coc-format)
 
 augroup mygroup
   autocmd!
@@ -191,12 +194,16 @@ nmap <leader>ac  <Plug>(coc-codeaction)
 " Apply AutoFix to problem on the current line.
 nmap <leader>qf  <Plug>(coc-fix-current)
 
-" Introduce function text object
+" Map function and class text objects
 " NOTE: Requires 'textDocument.documentSymbol' support from the language server.
 xmap if <Plug>(coc-funcobj-i)
-xmap af <Plug>(coc-funcobj-a)
 omap if <Plug>(coc-funcobj-i)
+xmap af <Plug>(coc-funcobj-a)
 omap af <Plug>(coc-funcobj-a)
+xmap ic <Plug>(coc-classobj-i)
+omap ic <Plug>(coc-classobj-i)
+xmap ac <Plug>(coc-classobj-a)
+omap ac <Plug>(coc-classobj-a)
 
 " Use <TAB> for selections ranges.
 " NOTE: Requires 'textDocument/selectionRange' support from the language server.
@@ -285,6 +292,7 @@ let g:user_emmet_expandabbr_key='<C-e>'
 
 " Lightline powerline
 let g:lightline = {
+      \ 'colorscheme': 'material',
       \ 'component': {
       \   'lineinfo': '⭡ %3l:%-2v',
       \ },
@@ -305,3 +313,11 @@ function! LightlineFugitive()
   endif
   return ''
 endfunction
+
+nnoremap <C-p> <C-i>
+
+" wrap long lines in quickfix
+augroup quickfix
+    autocmd!
+    autocmd FileType qf setlocal wrap
+augroup END
