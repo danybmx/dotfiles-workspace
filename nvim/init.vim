@@ -8,6 +8,8 @@ endif
 call plug#begin(stdpath('data') . '/plugged')
 
 Plug 'itchyny/lightline.vim'
+Plug 'maximbaz/lightline-ale'
+Plug 'dense-analysis/ale'
 Plug 'octref/RootIgnore'
 Plug 'milkypostman/vim-togglelist'
 Plug 'tpope/vim-surround'
@@ -20,9 +22,8 @@ Plug 'stephpy/vim-yaml'
 Plug 'christoomey/vim-system-copy'
 Plug 'christoomey/vim-sort-motion'
 Plug 'digitaltoad/vim-pug'
-Plug 'hzchirs/vim-material'
-Plug 'Yggdroot/indentLine'
 Plug 'townk/vim-autoclose'
+Plug 'ayu-theme/ayu-vim'
 
 " Text objects
 Plug 'michaeljsmith/vim-indent-object'
@@ -42,6 +43,7 @@ Plug 'jwalton512/vim-blade'
 Plug 'cakebaker/scss-syntax.vim'
 Plug 'nelsyeung/twig.vim'
 Plug 'phpactor/phpactor', {'for': 'php', 'branch': 'master', 'do': 'composer install --no-dev -o'}
+Plug 'kchmck/vim-coffee-script'
 
 " Easymotion
 Plug 'easymotion/vim-easymotion'
@@ -64,7 +66,9 @@ call plug#end()
 set cursorline
 set background=dark
 set termguicolors
-colorscheme vim-material
+let ayucolor="mirage"
+colorscheme ayu
+set scrolloff=6
 
 " Settings
 filetype plugin indent on
@@ -82,8 +86,7 @@ set showcmd        " display incomplete commands
 set incsearch      " do incremental searching
 set laststatus=2   " Always display the status line
 set autowrite      " Automatically :write before running commands
-set modelines=0    " Disable modelines as a security precaution
-set nomodeline     " Set nomodeline
+set modeline       " Enable modeline
 set number         " Show line numbers
 set relativenumber " Use relativenumbers
 set numberwidth=5  " Set a fixed width for numbers
@@ -96,8 +99,8 @@ set updatetime=300
 set shortmess+=c
 set signcolumn=yes
 
-" Make it obvious where 100 characters is
-set textwidth=100
+" Make it obvious where 80 characters is
+set textwidth=80
 set colorcolumn=+1
 
 " Open new split panes to right and bottom, which feels more natural
@@ -183,7 +186,12 @@ augroup mygroup
   autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
   " Update signature help on jump placeholder.
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
-augroup end
+augroup enoud
+
+augroup vagrant
+	au!
+	au BufRead,BufNewFile Vagrantfile set filetype=ruby
+augroup END
 
 " Applying codeAction to the selected region.
 " Example: `<leader>aap` for current paragraph
@@ -286,6 +294,8 @@ augroup vimrcEx
   autocmd BufRead,BufNewFile .{jscs,jshint,eslint,prettier}rc set filetype=json
   autocmd BufRead,BufNewFile *.blade.php set filetype=blade
   autocmd Filetype java,go setlocal tabstop=4 shiftwidth=4
+  autocmd FileType php set iskeyword+=$
+  autocmd FileType php nnoremap <buffer> gd :PhpactorGotoDefinition<CR>
 augroup END
 
 " Emmet
@@ -293,13 +303,16 @@ let g:user_emmet_expandabbr_key='<C-e>'
 
 " Lightline powerline
 let g:lightline = {
-      \ 'colorscheme': 'material',
+      \ 'colorscheme': 'ayu',
       \ 'component': {
       \   'lineinfo': '⭡ %3l:%-2v',
       \ },
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \ },
       \ 'component_function': {
-      \   'readonly': 'LightlineReadonly',
-      \   'fugitive': 'LightlineFugitive'
+      \   'gitbranch': 'FugitiveHead'
       \ },
       \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
       \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" }
